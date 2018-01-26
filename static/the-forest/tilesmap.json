@@ -23,31 +23,26 @@
          "x":0,
          "y":0
         }],
-         "nextobjectid":1,
-         "orientation":"orthogonal",
-         "renderorder":"right-down",
-         "tiledversion":"1.1.0",
-         "tileheight":16,
-         "tilesets":[
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.1.0",
+ "tileheight":16,
+ "tilesets":[
+        {
+          "firstgid":100,
+          "image":"..\/sheet.png",
+          "imageheight":128,
+          "imagewidth":272,
+          "margin":0,
+          "name":"tilesforest",
+          "properties":
             {
-             "firstgid":100,
-             "image":"..\/tiles\/walls_1x2.png",
-             "imageheight":128,
-             "imagewidth":272,
-            "margin":0,
-            "name":"tilesforest",
-            "properties":
-                {
 
-               },
-            "spacing":0,
-            "tileheight":16,
-            "tilewidth":16,
-            "source":"tilesforest.tsx"
-           }
-          ]
-
-
+            },
+          "spacing":0,
+          "tileheight":16,
+          "tilewidth":16
         }],
  "tilewidth":16,
  "type":"map",
