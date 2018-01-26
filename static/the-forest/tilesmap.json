@@ -6,6 +6,10 @@
          "height":20,
          "name":"BackgroundLayer",
          "opacity":1,
+         "properties":
+            {
+             "collides":"true"
+         },
          "type":"tilelayer",
          "visible":true,
          "width":100,
@@ -18,6 +22,10 @@
          "name":"GroundLayer",
          "opacity":1,
          "type":"tilelayer",
+         "properties":
+            {
+             "collides":"true"
+         },
          "visible":true,
          "width":100,
          "x":0,
@@ -43,7 +51,23 @@
          "spacing":0,
          "tileheight":16,
          "tilewidth":16
-        }],
+        },
+       {
+        "firstgid":100,
+        "image":"..\/tiles\/walls_1x2.png",
+        "imageheight":128,
+        "imagewidth":272,
+        "margin":0,
+        "name":"tilesforest",
+        "properties":
+           {
+
+           },
+        "spacing":0,
+        "tileheight":16,
+        "tilewidth":16
+       }
+      ],
  "tilewidth":16,
  "type":"map",
  "version":1,
