@@ -42,7 +42,8 @@
             },
          "spacing":0,
          "tileheight":16,
-         "tilewidth":16
+         "tilewidth":16,
+         "source":"tilesforest.tsx"
 
         }],
  "tilewidth":16,
