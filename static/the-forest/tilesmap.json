@@ -8,7 +8,7 @@
          "opacity":1,
          "properties":
             {
-             "collides":"true"
+             "collides":"false"
          },
          "type":"tilelayer",
          "visible":true,
@@ -51,7 +51,22 @@
          "spacing":0,
          "tileheight":16,
          "tilewidth":16
-        }
+        },
+       {
+        "firstgid":100,
+        "image":"..\/tiles\/walls_1x2.png",
+        "imageheight":128,
+        "imagewidth":272,
+        "margin":0,
+        "name":"tilesforest",
+        "properties":
+           {
+
+           },
+        "spacing":0,
+        "tileheight":16,
+        "tilewidth":16
+       }
       ],
  "tilewidth":16,
  "type":"map",
