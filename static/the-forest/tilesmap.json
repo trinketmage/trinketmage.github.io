@@ -30,7 +30,7 @@
  "tileheight":16,
  "tilesets":[
         {
-          "firstgid":100,
+          "firstgid":1,
           "image":"..\/sheet.png",
           "imageheight":128,
           "imagewidth":272,
