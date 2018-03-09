@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Skull</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
-    <script src="./../libs/three.min.js"></script>
-    <script src="./../libs/Tween.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <script src="node_modules/three/build/three.js"></script>
+    <script src="node_modules/@tweenjs/tween.js/src/Tween.js"></script>
   	<script id="vertexShader" type="x-shader/x-vertex">
   		precision highp float;
   		uniform float sineTime;
@@ -42,14 +42,24 @@
   			gl_FragColor = color;
   		}
   	</script>
+  </head>
+  <body style="margin: 0; padding: 0;">
     <style>
       canvas {
         display: block;
       }
     </style>
-  </head>
-  <body style="margin: 0; padding: 0;">
     <div id="root"></div>
+    <p style="    font-family: 'Amatic SC', sans-serif;
+    font-size: 2.5vw;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    margin: 0;
+    width: 100%;">Etre désenchanté est pire qu'être perdu.</p>
   </body>
-  <script src="./build/bundle.js"></script>
+  <script src="build/bundle.js"></script>
 </html>
