@@ -11052,6 +11052,100 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(global) {/*!
+ * VERSION: 1.6.0
+ * DATE: 2018-02-15
+ * UPDATES AND DOCS AT: http://greensock.com
+ *
+ * @license Copyright (c) 2008-2018, GreenSock. All rights reserved.
+ * This work is subject to the terms at http://greensock.com/standard-license or for
+ * Club GreenSock members, the software agreement that was issued with your membership.
+ * 
+ * @author: Jack Doyle, jack@greensock.com
+ **/
+var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window; //helps ensure compatibility with AMD/RequireJS and CommonJS/Node
+(_gsScope._gsQueue || (_gsScope._gsQueue = [])).push( function() {
+
+	"use strict";
+
+		var RoundPropsPlugin = _gsScope._gsDefine.plugin({
+				propName: "roundProps",
+				version: "1.6.0",
+				priority: -1,
+				API: 2,
+
+				//called when the tween renders for the first time. This is where initial values should be recorded and any setup routines should run.
+				init: function(target, value, tween) {
+					this._tween = tween;
+					return true;
+				}
+
+			}),
+			_roundLinkedList = function(node) {
+				while (node) {
+					if (!node.f && !node.blob) {
+						node.m = Math.round;
+					}
+					node = node._next;
+				}
+			},
+			p = RoundPropsPlugin.prototype;
+
+		p._onInitAllProps = function() {
+			var tween = this._tween,
+				rp = (tween.vars.roundProps.join) ? tween.vars.roundProps : tween.vars.roundProps.split(","),
+				i = rp.length,
+				lookup = {},
+				rpt = tween._propLookup.roundProps,
+				prop, pt, next;
+			while (--i > -1) {
+				lookup[rp[i]] = Math.round;
+			}
+			i = rp.length;
+			while (--i > -1) {
+				prop = rp[i];
+				pt = tween._firstPT;
+				while (pt) {
+					next = pt._next; //record here, because it may get removed
+					if (pt.pg) {
+						pt.t._mod(lookup);
+					} else if (pt.n === prop) {
+						if (pt.f === 2 && pt.t) { //a blob (text containing multiple numeric values)
+							_roundLinkedList(pt.t._firstPT);
+						} else {
+							this._add(pt.t, prop, pt.s, pt.c);
+							//remove from linked list
+							if (next) {
+								next._prev = pt._prev;
+							}
+							if (pt._prev) {
+								pt._prev._next = next;
+							} else if (tween._firstPT === pt) {
+								tween._firstPT = next;
+							}
+							pt._next = pt._prev = null;
+							tween._propLookup[prop] = rpt;
+						}
+					}
+					pt = next;
+				}
+			}
+			return false;
+		};
+
+		p._add = function(target, p, s, c) {
+			this._addTween(target, p, s, s + c, p, Math.round);
+			this._overwriteProps.push(p);
+		};
+
+}); if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); }
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
+
 /*** IMPORTS FROM imports-loader ***/
 var define = false;
 
@@ -11369,7 +11463,7 @@ var define = false;
 
 /***/ }),
 
-/***/ 35:
+/***/ 36:
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -11560,7 +11654,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 36:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -11750,11 +11844,11 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(35)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(36)))
 
 /***/ }),
 
-/***/ 37:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
@@ -11807,7 +11901,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(36);
+__webpack_require__(37);
 // On some exotic environments, it's not clear which object `setimmeidate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -22758,11 +22852,11 @@ Vue.compile = compileToFunctions;
 
 /* harmony default export */ __webpack_exports__["a"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(37).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(38).setImmediate))
 
 /***/ }),
 
-/***/ 63:
+/***/ 64:
 /***/ (function(module, exports) {
 
 /**
@@ -22796,7 +22890,7 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 64:
+/***/ 65:
 /***/ (function(module, exports) {
 
 /*
@@ -22879,7 +22973,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 65:
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -22898,7 +22992,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(63)
+var listToStyles = __webpack_require__(64)
 
 /*
 type StyleObject = {
@@ -23109,4 +23203,4 @@ function applyToTag (styleElement, obj) {
 /***/ })
 
 });
-//# sourceMappingURL=vendor.351be2a8ee91dd91839f.js.map
+//# sourceMappingURL=vendor.051388375a5e4378e7e7.js.map
